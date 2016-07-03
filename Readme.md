@@ -5,7 +5,7 @@ This is a simulator for generating test data for weather prediction
 # Observation Input
 Mean of Weather Data (eg Temperature,Humidity,Pressure, Condition etc ) collected from different Cities in US  
 **Input File** : src/main/resourse/input/ObservedWeatherData.txt  
-**Structure of input file **:   
+**Structure of input file**:   
 Cityname, IATACode, Continent, ContinentCode, DaysOfObservation, EndDateofObservation, MonthCode(January-1)| ProbabilyOfWetDayafterWetday| ProbabilityOfWetDayAfterDryDay| MeanTemp| StdDevnTemp| MeanPressure| StdDevnPressure| MeanHumidity| StdDevnHumidity| WeatherPredominantConditionSnowOrRain, <repeat till December> 
 
 # Building the code 
