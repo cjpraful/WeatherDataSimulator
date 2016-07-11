@@ -1,4 +1,4 @@
-package com.toy.envmodel.utils.helpers;
+package com.toy.envmodel.helpers;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

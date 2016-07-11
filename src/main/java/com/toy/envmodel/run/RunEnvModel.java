@@ -6,11 +6,11 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.toy.envmodel.constants.ModelConstants;
+import com.toy.envmodel.dto.InputArgsDTO;
+import com.toy.envmodel.generators.EnvValueGenerator;
+import com.toy.envmodel.helpers.DateValidator;
+import com.toy.envmodel.helpers.RegionInitHelper;
 import com.toy.envmodel.models.Region;
-import com.toy.envmodel.utils.beans.InputArgs;
-import com.toy.envmodel.utils.generators.EnvValueGenerator;
-import com.toy.envmodel.utils.helpers.DateValidator;
-import com.toy.envmodel.utils.helpers.RegionInitHelper;
 
 /**
  * RunEnvModel.java - Entry class. Accepts start date and endDate parameters for generating Weather Data 
@@ -29,10 +29,9 @@ public class RunEnvModel {
 			String endDate = args[1];	
 			DateValidator dateValidator = new DateValidator();
 
-			if(dateValidator.isThisDateValid(startDate,ModelConstants.DATE_FORMAT) && 
-					dateValidator.isThisDateValid(endDate,ModelConstants.DATE_FORMAT)){
+			if(dateValidator.isValidDates(startDate,endDate,ModelConstants.DATE_FORMAT)){
 
-				InputArgs inpArgs =  new InputArgs();
+				InputArgsDTO inpArgs =  new InputArgsDTO();
 				inpArgs.setStartDate(Date.valueOf(startDate));
 				inpArgs.setEndDate(Date.valueOf(endDate));
 

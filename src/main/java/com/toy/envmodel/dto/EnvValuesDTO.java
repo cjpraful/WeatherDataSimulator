@@ -1,13 +1,13 @@
-package com.toy.envmodel.utils.beans;
+package com.toy.envmodel.dto;
 
 import java.io.Serializable;
 import java.util.Date;
 /**
- * EnvValues.java - JavaBean for EnvironmentVariables Temperature, Pressure, Humidity
+ * EnvValuesDTO.java - DTO for EnvironmentVariables Temperature, Pressure, Humidity
  * @author praful
  * 
  */
-public class EnvValues implements Serializable{
+public class EnvValuesDTO {
 
 	private Date meaasuredDate;
 	private double temperature;

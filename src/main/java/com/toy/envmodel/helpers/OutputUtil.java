@@ -1,4 +1,4 @@
-package com.toy.envmodel.utils.helpers;
+package com.toy.envmodel.helpers;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -7,8 +7,8 @@ import java.io.IOException;
 import org.apache.log4j.Logger;
 
 import com.toy.envmodel.constants.ModelConstants;
+import com.toy.envmodel.dto.EnvValuesDTO;
 import com.toy.envmodel.models.Region;
-import com.toy.envmodel.utils.beans.EnvValues;
 
 /**
  * OutputUtil.java - Write\Append generated weather data to Output file
@@ -25,7 +25,7 @@ public class OutputUtil {
 	public void writeToOut(Region region){
 
 		outString.setLength(0);
-		EnvValues envValues= region.getEnvValuesGenerated();
+		EnvValuesDTO envValues= region.getEnvValuesGenerated();
 		outString.append(region.getRegionCode()).append(ModelConstants.OUT_DELIM)
 		.append(region.getLatitude()).append(ModelConstants.COMMA)
 		.append(region.getLongitude()).append(ModelConstants.COMMA)
@@ -52,7 +52,7 @@ public class OutputUtil {
 			out.write("\n");
 			out.close();
 		} catch (IOException e) {
-			logger.error("Output file Error "+e);
+			logger.warn("Output file Error "+e);
 		} 
 	}
 }

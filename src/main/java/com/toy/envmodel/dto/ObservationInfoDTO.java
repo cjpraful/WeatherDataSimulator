@@ -1,9 +1,14 @@
-package com.toy.envmodel.observations;
+package com.toy.envmodel.dto;
 
 import java.util.Date;
 
 
-public class ObservationInfo {
+/**
+ * ObservationInfoDTO - DTO for ObservationInfo
+ * @author praful
+ *
+ */
+public class ObservationInfoDTO {
 
 	private long observedDaysInitial;
 	private long generatedDaysAfterStart;

@@ -4,9 +4,9 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Random;
 
-import com.toy.envmodel.observations.ObservationInfo;
-import com.toy.envmodel.observations.RegionObservedParams;
-import com.toy.envmodel.utils.beans.EnvValues;
+import com.toy.envmodel.dto.EnvValuesDTO;
+import com.toy.envmodel.dto.ObservationInfoDTO;
+import com.toy.envmodel.dto.RegionObservedParamsDTO;
 /**
  * Region.java - 
  * @author praful
@@ -16,12 +16,12 @@ public class Region extends Geography{
 
 	String regionName;
 	String regionCode;
-	Map<Integer,RegionObservedParams> monthObservedParamMapping;
-	ObservationInfo obsInfo;
+	Map<Integer,RegionObservedParamsDTO> monthObservedParamMapping;
+	ObservationInfoDTO obsInfo;
 
 	Date currentDate;
 	String timePart;
-	EnvValues envValuesGenerated;
+	EnvValuesDTO envValuesGenerated;
 
 	boolean isPrevDayWet;
 
@@ -38,13 +38,13 @@ public class Region extends Geography{
 	/**
 	 * @return the envValuesGenerated
 	 */
-	public EnvValues getEnvValuesGenerated() {
+	public EnvValuesDTO getEnvValuesGenerated() {
 		return envValuesGenerated;
 	}
 	/**
 	 * @param envValuesGenerated the envValuesGenerated to set
 	 */
-	public void setEnvValuesGenerated(EnvValues envValuesGenerated) {
+	public void setEnvValuesGenerated(EnvValuesDTO envValuesGenerated) {
 		this.envValuesGenerated = envValuesGenerated;
 	}
 	/**
@@ -62,13 +62,13 @@ public class Region extends Geography{
 	/**
 	 * @return the obsInfo
 	 */
-	public ObservationInfo getObsInfo() {
+	public ObservationInfoDTO getObsInfo() {
 		return obsInfo;
 	}
 	/**
 	 * @param obsInfo the obsInfo to set
 	 */
-	public void setObsInfo(ObservationInfo obsInfo) {
+	public void setObsInfo(ObservationInfoDTO obsInfo) {
 		this.obsInfo = obsInfo;
 	}
 	/**
@@ -98,28 +98,31 @@ public class Region extends Geography{
 	/**
 	 * @return the monthObservedParamMapping
 	 */
-	public Map<Integer, RegionObservedParams> getMonthObservedParamMapping() {
+	public Map<Integer, RegionObservedParamsDTO> getMonthObservedParamMapping() {
 		return monthObservedParamMapping;
 	}
 	/**
 	 * @param monthObservedParamMapping the monthObservedParamMapping to set
 	 */
 	public void setMonthObservedParamMapping(
-			Map<Integer, RegionObservedParams> monthObservedParamMapping) {
+			Map<Integer, RegionObservedParamsDTO> monthObservedParamMapping) {
 		this.monthObservedParamMapping = monthObservedParamMapping;
 	}
+	
 	/**
 	 * @return the timePart
 	 */
 	public String getTimePart() {
 		return timePart;
 	}
+	
 	/**
 	 * @param timePart the timePart to set
 	 */
 	public void setTimePart(String timePart) {
 		this.timePart = timePart;
 	}
+	
 	/**
 	 * @return the gaussTempRandom
 	 */
@@ -134,6 +137,7 @@ public class Region extends Geography{
 		}
 		return gaussTempRandom;
 	}
+	
 	/**
 	 * @return the gaussPressureRandom
 	 */
@@ -151,6 +155,7 @@ public class Region extends Geography{
 
 
 	}
+	
 	/**
 	 * @return the gaussHumidityRandom
 	 */
@@ -165,12 +170,14 @@ public class Region extends Geography{
 		}
 		return gaussHumidityRandom;
 	}
+	
 	/**
 	 * @return the isPrevDayWet
 	 */
 	public boolean isPrevDayWet() {
 		return isPrevDayWet;
 	}
+	
 	/**
 	 * @param isPrevDayWet the isPrevDayWet to set
 	 */

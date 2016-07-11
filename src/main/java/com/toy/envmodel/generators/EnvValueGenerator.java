@@ -1,16 +1,16 @@
-package com.toy.envmodel.utils.generators;
+package com.toy.envmodel.generators;
 
 import java.sql.Date;
 import java.util.List;
 import java.util.Random;
 
 import com.toy.envmodel.constants.ModelConstants;
+import com.toy.envmodel.dto.EnvValuesDTO;
+import com.toy.envmodel.dto.InputArgsDTO;
+import com.toy.envmodel.dto.RegionObservedParamsDTO;
+import com.toy.envmodel.helpers.GeneratorUtil;
+import com.toy.envmodel.helpers.OutputUtil;
 import com.toy.envmodel.models.Region;
-import com.toy.envmodel.observations.RegionObservedParams;
-import com.toy.envmodel.utils.beans.EnvValues;
-import com.toy.envmodel.utils.beans.InputArgs;
-import com.toy.envmodel.utils.helpers.GeneratorUtil;
-import com.toy.envmodel.utils.helpers.OutputUtil;
 /**
  * EnvValueGenerator.java - Generates Weather data based on StartDate, end Date and observedWeatherData
  * @author praful
@@ -18,24 +18,24 @@ import com.toy.envmodel.utils.helpers.OutputUtil;
  */
 public class EnvValueGenerator {
 
-	private InputArgs inpArgs;
+	private InputArgsDTO inpArgs;
 	public List<Region> regions;
 	public OutputUtil outputUtil;
 	
-	public List<Region> generateEnvValues(List<Region> regionsinp, InputArgs inpArgs){
+	public List<Region> generateEnvValues(List<Region> regionsinp, InputArgsDTO inpArgs){
 
 		this.inpArgs = inpArgs;
 		Date currentDate = inpArgs.getStartDate();
 		Date endDate = inpArgs.getEndDate();
 		this.regions = regionsinp;
 
-		while(currentDate.compareTo(endDate)<=0){
+		while(currentDate.compareTo(endDate) <= 0){
 
 			for(Region region: regions){
 
-				EnvValues envValGenerated = region.getEnvValuesGenerated();
+				EnvValuesDTO envValGenerated = region.getEnvValuesGenerated();
 				if(envValGenerated==null){
-					envValGenerated = new EnvValues();
+					envValGenerated = new EnvValuesDTO();
 				}
 
 				region.setCurrentDate(currentDate);
@@ -44,7 +44,7 @@ public class EnvValueGenerator {
 				@SuppressWarnings("deprecation")
 
 				Integer month  = new Integer(region.getCurrentDate().getMonth()+1);
-				RegionObservedParams regObsParams = region.getMonthObservedParamMapping().get(month);
+				RegionObservedParamsDTO regObsParams = region.getMonthObservedParamMapping().get(month);
 
 				//Get the weather condition
 				double pww = regObsParams.getProb_ww();
@@ -93,7 +93,7 @@ public class EnvValueGenerator {
 	}
 
 
-	private double generateTempValues(Region region, RegionObservedParams regObsParams){
+	private double generateTempValues(Region region, RegionObservedParamsDTO regObsParams){
 
 
 		double avgTemp=regObsParams.getMeanTemperature();
@@ -109,7 +109,7 @@ public class EnvValueGenerator {
 
 
 
-	private double generateHumidityValues(Region region, RegionObservedParams regObsParams) {
+	private double generateHumidityValues(Region region, RegionObservedParamsDTO regObsParams) {
 		Random random = new Random();
 		double avgHumidity=regObsParams.getMeanHumidity();
 		double sdHumidity = regObsParams.getSdHumidity();
@@ -121,7 +121,7 @@ public class EnvValueGenerator {
 	}
 
 
-	private double generatePressureValues(Region region, RegionObservedParams regObsParams) {
+	private double generatePressureValues(Region region, RegionObservedParamsDTO regObsParams) {
 
 		Random random = new Random();
 		double avgPressure=regObsParams.getMeanPressure();

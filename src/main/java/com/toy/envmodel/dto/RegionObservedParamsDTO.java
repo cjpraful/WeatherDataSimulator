@@ -1,12 +1,12 @@
-package com.toy.envmodel.observations;
+package com.toy.envmodel.dto;
 
 /**
- * RegionObservedParams.java - 
+ * RegionObservedParams.java - DTO for Observed Region Data
  * @author praful
  * 
  */
 
-public class RegionObservedParams {
+public class RegionObservedParamsDTO {
 	String month;
 	double meanTemperature;
 	double meanPressure;

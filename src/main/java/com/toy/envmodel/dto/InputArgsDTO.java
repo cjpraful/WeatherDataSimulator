@@ -1,15 +1,14 @@
-package com.toy.envmodel.utils.beans;
+package com.toy.envmodel.dto;
 
-import java.io.Serializable;
 import java.sql.Date;
 
 /**
- * Input.java - JavaBean for Input date 
+ * Input.java - DTO for Input data 
  * @author praful
  * 
  */
 
-public class InputArgs implements Serializable{
+public class InputArgsDTO{
 
 	private Date startDate;
 	private Date endDate;

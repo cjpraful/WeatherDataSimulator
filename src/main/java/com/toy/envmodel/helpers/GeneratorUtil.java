@@ -1,9 +1,11 @@
-package com.toy.envmodel.utils.helpers;
+package com.toy.envmodel.helpers;
 
 import java.sql.Date;
 import java.sql.Time;
 import java.util.Calendar;
 import java.util.Random;
+
+import org.apache.log4j.Logger;
 
 import com.toy.envmodel.constants.ModelConstants;
 
@@ -14,9 +16,10 @@ import com.toy.envmodel.constants.ModelConstants;
  */
 
 public class GeneratorUtil {
+	public  static Logger logger = Logger.getLogger(GeneratorUtil.class);
 	static StringBuilder builder = new StringBuilder();
 	static long TIME_LOWER_RANGE = 10000000; // assign lower range value
-	static long TIME_UPPER_RANGE = 100000000; // assign upper range value
+	static long TIME_UPPER_RANGE = 100000000; // assign upper range valuesssssss
 
 	public static Date addDays(Date date, int days) {
 		Calendar cal = Calendar.getInstance();

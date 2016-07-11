@@ -1,9 +1,9 @@
-package com.toy.envmodel.utils.helpers;
+package com.toy.envmodel.helpers;
 
 import java.util.List;
 
+import com.toy.envmodel.dto.InputArgsDTO;
 import com.toy.envmodel.models.Region;
-import com.toy.envmodel.utils.beans.InputArgs;
 
 /**
  * GeographyInitHelper.java - 
@@ -13,8 +13,8 @@ import com.toy.envmodel.utils.beans.InputArgs;
 
 public abstract class GeographyInitHelper {
 
-	private InputArgs inputArgs;
-	public GeographyInitHelper(InputArgs inputArgs){
+	private InputArgsDTO inputArgs;
+	public GeographyInitHelper(InputArgsDTO inputArgs){
 		this.inputArgs = inputArgs;
 	}
 	
