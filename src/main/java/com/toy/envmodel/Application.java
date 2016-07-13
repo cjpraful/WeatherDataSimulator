@@ -1,4 +1,4 @@
-package com.toy.envmodel.run;
+package com.toy.envmodel;
 
 import java.sql.Date;
 import java.util.List;
@@ -18,9 +18,9 @@ import com.toy.envmodel.models.Region;
  * 
  */
 
-public class RunEnvModel {
+public class Application {
 
-	public  static Logger logger = Logger.getLogger(RunEnvModel.class);
+	public  static Logger logger = Logger.getLogger(Application.class);
 
 	public static void main(String[] args){
 		if(args.length >= 2){

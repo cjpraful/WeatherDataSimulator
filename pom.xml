@@ -36,7 +36,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>com.toy.envmodel.run.RunEnvModel</mainClass>
+							<mainClass>com.toy.envmodel.Application</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
