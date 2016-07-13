@@ -20,6 +20,7 @@ public class ModelConstants {
 	public static final String CONDITION_OVERCAST = "OVERCAST";
 	public static final String CONDITION_SUNNY = "SUNNY";
 
+	//public static final String DATE_FORMAT = "yyyy-MM-dd";
 	public static final String DATE_FORMAT = "yyyy-MM-dd";
 	
 	public static final String INPUT_FILE = "input/ObservedWeatherData.txt";	

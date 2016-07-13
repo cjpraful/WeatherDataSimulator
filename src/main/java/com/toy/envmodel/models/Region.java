@@ -1,8 +1,9 @@
 package com.toy.envmodel.models;
 
-import java.util.Date;
 import java.util.Map;
 import java.util.Random;
+
+import org.joda.time.DateTime;
 
 import com.toy.envmodel.dto.EnvValuesDTO;
 import com.toy.envmodel.dto.ObservationInfoDTO;
@@ -19,7 +20,7 @@ public class Region extends Geography{
 	Map<Integer,RegionObservedParamsDTO> monthObservedParamMapping;
 	ObservationInfoDTO obsInfo;
 
-	Date currentDate;
+	DateTime currentDate;
 	String timePart;
 	EnvValuesDTO envValuesGenerated;
 
@@ -50,13 +51,13 @@ public class Region extends Geography{
 	/**
 	 * @return the currentDate
 	 */
-	public Date getCurrentDate() {
+	public DateTime getCurrentDate() {
 		return currentDate;
 	}
 	/**
 	 * @param currentDate the currentDate to set
 	 */
-	public void setCurrentDate(Date currentDate) {
+	public void setCurrentDate(DateTime currentDate) {
 		this.currentDate = currentDate;
 	}
 	/**
@@ -127,9 +128,9 @@ public class Region extends Geography{
 	 * @return the gaussTempRandom
 	 */
 	public Random getGaussTempRandom() {
-		if(monthTempVal!=currentDate.getMonth()){
+		if(monthTempVal!=currentDate.getMonthOfYear()){
 			gaussTempRandom = new Random();
-			monthTempVal=currentDate.getMonth();
+			monthTempVal=currentDate.getMonthOfYear();
 		}else{
 			if(gaussTempRandom == null){
 				gaussTempRandom = new Random();
@@ -143,9 +144,9 @@ public class Region extends Geography{
 	 */
 	public Random getGaussPressureRandom() {
 
-		if(monthPressureVal!=currentDate.getMonth()){
+		if(monthPressureVal!=currentDate.getMonthOfYear()){
 			gaussPressureRandom = new Random();
-			monthPressureVal=currentDate.getMonth();
+			monthPressureVal=currentDate.getMonthOfYear();
 		}else{
 			if(gaussPressureRandom == null){
 				gaussPressureRandom = new Random();
@@ -160,9 +161,9 @@ public class Region extends Geography{
 	 * @return the gaussHumidityRandom
 	 */
 	public Random getGaussHumidityRandom() {
-		if(monthHumidityVal!=currentDate.getMonth()){
+		if(monthHumidityVal!=currentDate.getMonthOfYear()){
 			gaussHumidityRandom = new Random();
-			monthHumidityVal=currentDate.getMonth();
+			monthHumidityVal=currentDate.getMonthOfYear();
 		}else{
 			if(gaussHumidityRandom == null){
 				gaussHumidityRandom = new Random();

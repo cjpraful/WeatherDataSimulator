@@ -30,7 +30,7 @@ public class OutputUtil {
 		.append(region.getLatitude()).append(ModelConstants.COMMA)
 		.append(region.getLongitude()).append(ModelConstants.COMMA)
 		.append(region.getObsInfo().getObservedDaysInitial()).append(ModelConstants.OUT_DELIM)
-		.append(region.getCurrentDate()).append(region.getTimePart()).append(ModelConstants.OUT_DELIM)
+		.append(region.getCurrentDate().toYearMonthDay()).append(region.getTimePart()).append(ModelConstants.OUT_DELIM)
 		.append(envValues.getCondition()).append(ModelConstants.OUT_DELIM)
 		.append(envValues.getTemperature()).append(ModelConstants.OUT_DELIM)
 		.append(envValues.getPressure()).append(ModelConstants.OUT_DELIM)

@@ -4,6 +4,9 @@ import java.sql.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import com.toy.envmodel.constants.ModelConstants;
 import com.toy.envmodel.dto.InputArgsDTO;
@@ -30,10 +33,12 @@ public class Application {
 			DateValidator dateValidator = new DateValidator();
 
 			if(dateValidator.isValidDates(startDate,endDate,ModelConstants.DATE_FORMAT)){
-
+				DateTimeFormatter formatter = DateTimeFormat.forPattern(ModelConstants.DATE_FORMAT);
+				
 				InputArgsDTO inpArgs =  new InputArgsDTO();
-				inpArgs.setStartDate(Date.valueOf(startDate));
-				inpArgs.setEndDate(Date.valueOf(endDate));
+				
+				inpArgs.setStartDate(DateTime.parse(startDate, formatter));
+				inpArgs.setEndDate(DateTime.parse(endDate, formatter));
 
 				RegionInitHelper rih = new RegionInitHelper(inpArgs);
 				List<Region> regions  = rih.initModel();

@@ -1,8 +1,9 @@
 package com.toy.envmodel.generators;
 
-import java.sql.Date;
 import java.util.List;
 import java.util.Random;
+
+import org.joda.time.DateTime;
 
 import com.toy.envmodel.constants.ModelConstants;
 import com.toy.envmodel.dto.EnvValuesDTO;
@@ -25,11 +26,11 @@ public class EnvValueGenerator {
 	public List<Region> generateEnvValues(List<Region> regionsinp, InputArgsDTO inpArgs){
 
 		this.inpArgs = inpArgs;
-		Date currentDate = inpArgs.getStartDate();
-		Date endDate = inpArgs.getEndDate();
+		DateTime currentDate = inpArgs.getStartDate();
+		DateTime endDate = inpArgs.getEndDate();
 		this.regions = regionsinp;
 
-		while(currentDate.compareTo(endDate) <= 0){
+		while(currentDate.isBefore(endDate) || currentDate.isEqual(endDate)){
 
 			for(Region region: regions){
 
@@ -43,7 +44,7 @@ public class EnvValueGenerator {
 				region.setTimePart(GeneratorUtil.getTime());
 				@SuppressWarnings("deprecation")
 
-				Integer month  = new Integer(region.getCurrentDate().getMonth()+1);
+				Integer month  = new Integer(region.getCurrentDate().getMonthOfYear()+1);
 				RegionObservedParamsDTO regObsParams = region.getMonthObservedParamMapping().get(month);
 
 				//Get the weather condition
@@ -86,7 +87,7 @@ public class EnvValueGenerator {
 
 
 			}
-			currentDate = GeneratorUtil.addDays(currentDate, 1);
+			currentDate = currentDate.plusDays(1);
 		}
 
 		return this.regions;

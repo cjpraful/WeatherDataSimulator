@@ -1,10 +1,9 @@
 package com.toy.envmodel.helpers;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.apache.log4j.Logger;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 /**
  * DateValidator.java - A class for validating Date 
@@ -23,6 +22,7 @@ public class DateValidator {
 	 * @return true if valid ,false if invalid
 	 */
 	public boolean isValidDates(String startDate,String endDate, String dateFormat){
+		
 		if(startDate!=null && endDate != null){
 			if(isThisDateValid(startDate,dateFormat) && isThisDateValid(endDate, dateFormat)){
 				if(compareDates(startDate,endDate,dateFormat)){
@@ -33,7 +33,7 @@ public class DateValidator {
 				return false;
 			}
 		}else{
-			logger.error("Start Date /End Date Null");
+			logger.error("Start Date / End Date Null");
 			return false;
 		}
 	}
@@ -46,6 +46,7 @@ public class DateValidator {
 	 */
 	public boolean isThisDateValid(String dateToValidate, String dateFormat){
 		
+		
 		if(dateToValidate == null){
 			logger.error("Date parameter null");
 			return false;
@@ -54,15 +55,16 @@ public class DateValidator {
 			logger.error("dateFromat null");
 			return false;
 		}
-		SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
-		sdf.setLenient(false);
+		/*SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+		sdf.setLenient(false);*/
 		
-		try {			
-			//if not valid, it will throw ParseException
-			Date date = sdf.parse(dateToValidate);
-			logger.debug(date);
 		
-		} catch (ParseException e) {
+		try {
+			DateTimeFormatter formatter = DateTimeFormat.forPattern(dateFormat);
+			DateTime dt = formatter.parseDateTime(dateToValidate);			
+			logger.debug(dt);
+		
+		} catch (Exception e) {
 			logger.error("Incorrect Date "+dateToValidate +" Expected Date format is (yyyy-MM-dd)");
 			return false;
 		}		
@@ -82,22 +84,24 @@ public class DateValidator {
 			return false;
 		}
 		if(dateFormat == null){
-			logger.error("dateFromat null");
+			logger.error("date format null");
 			return false;
 		}
 		
-		SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
     	try {
-			Date date1 = sdf.parse(startDate);
-			Date date2 = sdf.parse(endDate);
-			if(date1.compareTo(date2) <= 0){
+    		DateTimeFormatter formatter = DateTimeFormat.forPattern(dateFormat);
+			
+    		DateTime date1 = formatter.parseDateTime(startDate);
+			DateTime date2 = formatter.parseDateTime(endDate);
+			
+			if(date1.isBefore(date2) || date1.isEqual(date2)){
 				return true;
 			}else{
 				logger.error("Start Date "+startDate+" greater than End Date "+endDate);
 				return false;
 			}
-		} catch (ParseException e) {
-			logger.error("Error Parsing date "+e);
+		} catch (Exception e) {
+			logger.error("Incorrect Date format - Expected Date format is (yyyy-MM-dd)");
 			return false;
 		}
 	}

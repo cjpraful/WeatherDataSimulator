@@ -2,6 +2,8 @@ package com.toy.envmodel.dto;
 
 import java.sql.Date;
 
+import org.joda.time.DateTime;
+
 /**
  * Input.java - DTO for Input data 
  * @author praful
@@ -10,30 +12,30 @@ import java.sql.Date;
 
 public class InputArgsDTO{
 
-	private Date startDate;
-	private Date endDate;
+	private DateTime startDate;
+	private DateTime endDate;
 	/**
 	 * @return the startDate
 	 */
-	public Date getStartDate() {
+	public DateTime getStartDate() {
 		return startDate;
 	}
 	/**
 	 * @param startDate the startDate to set
 	 */
-	public void setStartDate(Date startDate) {
+	public void setStartDate(DateTime startDate) {
 		this.startDate = startDate;
 	}
 	/**
 	 * @return the endDate
 	 */
-	public Date getEndDate() {
+	public DateTime getEndDate() {
 		return endDate;
 	}
 	/**
 	 * @param endDate the endDate to set
 	 */
-	public void setEndDate(Date endDate) {
+	public void setEndDate(DateTime endDate) {
 		this.endDate = endDate;
 	}
 	
